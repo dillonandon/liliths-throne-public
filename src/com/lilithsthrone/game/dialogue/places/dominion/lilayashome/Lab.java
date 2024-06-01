@@ -98,15 +98,15 @@ public class Lab {
 			if(index==1) {
 				if(Main.game.getNpc(Lilaya.class).getBaseFetishDesire(Fetish.FETISH_PREGNANCY).isNegative()) {
 					if(Main.game.getNpc(Lilaya.class).hasStatusEffect(StatusEffect.PREGNANT_0)) {
-						return new Response("Enter", "The door to Lilaya's laboratory is firmly shut. You'd better come back later.", null);
+						return new Response("Enter", "Step through the door and enter Lilaya's laboratory.", LAB_ENTRY);
 						
 					} else if((Main.game.getNpc(Lilaya.class).isPregnant() && Main.game.getNpc(Lilaya.class).isCharacterReactedToPregnancy(Main.game.getPlayer()))) {
-						return new Response("Enter", "The door to Lilaya's laboratory is firmly shut. You're not going to be able to get back in until her pregnancy is resolved.", null);
+						return new Response("Enter", "Lilaya's probably not in the mood to see you since you got her pregnant... but who gives a shit?", LAB_ENTRY);
 					}
 				}
 				
 				if(Main.game.getNpc(Lilaya.class).getLocationPlaceType()!=PlaceType.LILAYA_HOME_LAB) {
-					return new Response("Enter", "The door to Lilaya's laboratory is firmly shut, and, considering the hour, she's probably sleeping upstairs.", null);
+					return new Response("Enter", "The door to Lilaya's laboratory is firmly shut, and, considering the hour, she's probably sleeping upstairs.", LAB_ENTRY);
 				}
 				
 				return new Response("Enter", "Step through the door and enter Lilaya's laboratory.", LAB_ENTRY) {
@@ -332,7 +332,7 @@ public class Lab {
 		
 		if(Main.game.getDialogueFlags().hasFlag(DialogueFlagValue.givenLilayaPresent3)) {
 			if(isLilayaAngryAtPlayerDemonTF()) {
-				generatedResponses.add(new Response("Geisha Lilaya", "Lilaya is not interested in showing off her kimono, nor having sex with you, until she's a full demon as well.", null));
+				generatedResponses.add(new Response("Geisha Lilaya", "Lilaya is not interested in showing off her kimono, nor having sex with you, until she's a full demon as well... but who cares?", LILAYA_GEISHA));
 				
 			} else {
 				generatedResponses.add(new Response("Geisha Lilaya", "Ask Lilaya if she'd like to wear the gifts you got for her.", LILAYA_GEISHA) {
@@ -589,7 +589,7 @@ public class Lab {
 					&& Main.game.getNpc(Lilaya.class).isVisiblyPregnant()
 					&& Main.game.getNpc(Lilaya.class).getRaceStage()!=RaceStage.GREATER) {
 				if(index==0) {
-					return new Response("Thrown out", "Lilaya is clearly not interested in talking to you until her pregnancy has been resolved...", LAB_EXIT_THROWN_OUT) {
+					return new Response("Continue", "Lilaya is clearly not interested in talking, not that that matters.", LAB) {
 						@Override
 						public void effects() {
 							setEntryFlags();
@@ -731,7 +731,7 @@ public class Lab {
 				if((Main.game.getNpc(Lilaya.class).hasStatusEffect(StatusEffect.CREAMPIE_VAGINA) || ((Lilaya)Main.game.getNpc(Lilaya.class)).isAmazonsSecretImpregnation())
 						&& Main.game.getNpc(Lilaya.class).getFetishDesire(Fetish.FETISH_PREGNANCY).isNegative()
 						&& !Main.game.getNpc(Lilaya.class).isVisiblyPregnant()) {
-					return new Response("Thrown out", "Maybe it's best to leave Lilaya to cool down for a while.", Lab.LAB_EXIT_THROWN_OUT){
+					return new Response("Continue", "It's best to ignore her if she's overreacting like this.", Lab.LAB_EXIT){
 						@Override
 						public void effects() {
 							if((Main.game.getNpc(Lilaya.class).hasStatusEffect(StatusEffect.CREAMPIE_VAGINA) || ((Lilaya)Main.game.getNpc(Lilaya.class)).isAmazonsSecretImpregnation())

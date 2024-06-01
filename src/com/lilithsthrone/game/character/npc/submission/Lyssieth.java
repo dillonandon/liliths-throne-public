@@ -183,7 +183,7 @@ public class Lyssieth extends NPC {
 					PersonalityTrait.KIND,
 					PersonalityTrait.LEWD);
 			
-			this.setSexualOrientation(SexualOrientation.AMBIPHILIC);
+			this.setSexualOrientation(SexualOrientation.GYNEPHILIC);
 			
 			this.setHistory(Occupation.NPC_ELDER_LILIN);
 			
@@ -320,6 +320,10 @@ public class Lyssieth extends NPC {
 		
 		this.setPiercedEar(true);
 		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_piercing_ear_ring", PresetColour.CLOTHING_SILVER, false), true, this);
+		AbstractClothing collar = Main.game.getItemGen().generateClothing("innoxia_bdsm_metal_collar", false);
+		collar.setSealed(true);
+		collar.setColour(0, PresetColour.CLOTHING_SILVER);
+		this.equipClothingFromNowhere(collar, true, this);
 	}
 
 	@Override
@@ -1168,6 +1172,11 @@ public class Lyssieth extends NPC {
 		}
 		
 		return UtilText.parse(this, target, "[npc.speech("+returnedLine+")]");
+	}
+
+	@Override
+	public boolean isAttractedTo(GameCharacter character) {
+		return false;
 	}
 
 	@Override

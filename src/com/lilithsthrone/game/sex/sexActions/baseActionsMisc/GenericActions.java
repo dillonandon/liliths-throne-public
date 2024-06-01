@@ -2410,7 +2410,7 @@ public class GenericActions {
 
 		@Override
 		public boolean isOverrideAvailableDuringResisting() {
-			return true;
+			return false;
 		}
 		@Override
 		public String getActionTitle() {
@@ -2445,7 +2445,7 @@ public class GenericActions {
 		
 		@Override
 		public boolean endsSex() {
-			return true;
+			return false;
 		}
 	};
 	

@@ -59,6 +59,7 @@ import com.lilithsthrone.utils.Util.Value;
 import com.lilithsthrone.utils.colours.PresetColour;
 import com.lilithsthrone.world.WorldType;
 import com.lilithsthrone.world.places.PlaceType;
+import com.lilithsthrone.game.inventory.clothing.AbstractClothing;
 
 /**
  * @since 0.1.3
@@ -129,7 +130,7 @@ public class Rose extends NPC {
 					PersonalityTrait.COWARDLY,
 					PersonalityTrait.SELFISH);
 			
-			this.setSexualOrientation(SexualOrientation.AMBIPHILIC);
+			this.setSexualOrientation(SexualOrientation.GYNEPHILIC);
 			
 			this.setHistory(Occupation.MAID);
 	
@@ -143,9 +144,9 @@ public class Rose extends NPC {
 
 		// Core:
 		this.setHeight(165);
-		this.setFemininity(90);
-		this.setMuscle(Muscle.TWO_TONED.getMedianValue());
-		this.setBodySize(BodySize.ONE_SLENDER.getMedianValue());
+		this.setFemininity(100);
+		this.setMuscle(Muscle.ZERO_SOFT.getMedianValue());
+		this.setBodySize(BodySize.TWO_AVERAGE.getMedianValue());
 
 		// Coverings:
 		this.setEyeCovering(new Covering(BodyCoveringType.EYE_FELINE, PresetColour.EYE_GREEN));
@@ -172,7 +173,7 @@ public class Rose extends NPC {
 		
 		// Face:
 		this.setFaceVirgin(false);
-		this.setLipSize(LipSize.TWO_FULL);
+		this.setLipSize(LipSize.THREE_PLUMP);
 		this.setFaceCapacity(Capacity.FIVE_ROOMY, true);
 		// Throat settings and modifiers
 		this.setTongueLength(TongueLength.ZERO_NORMAL.getMedianValue());
@@ -180,8 +181,8 @@ public class Rose extends NPC {
 		
 		// Chest:
 		this.setNippleVirgin(true);
-		this.setBreastSize(CupSize.C.getMeasurement());
-		this.setBreastShape(BreastShape.PERKY);
+		this.setBreastSize(CupSize.F.getMeasurement());
+		this.setBreastShape(BreastShape.ROUND);
 		this.setNippleSize(NippleSize.TWO_BIG.getValue());
 		this.setAreolaeSize(AreolaeSize.TWO_BIG.getValue());
 		// Nipple settings and modifiers
@@ -221,14 +222,17 @@ public class Rose extends NPC {
 
 		this.equipMainWeaponFromNowhere(Main.game.getItemGen().generateWeapon("innoxia_cleaning_feather_duster"));
 		
-		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_groin_vstring", PresetColour.CLOTHING_BLACK, false), true, this);
-		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_chest_fullcup_bra", PresetColour.CLOTHING_BLACK, false), true, this);
+		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_groin_lacy_thong", PresetColour.CLOTHING_BLACK, false), true, this);
+		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_chest_lacy_plunge_bra", PresetColour.CLOTHING_BLACK, false), true, this);
 		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_maid_dress", PresetColour.CLOTHING_BLACK, false), true, this);
 		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_maid_headpiece", PresetColour.CLOTHING_BLACK, false), true, this);
 		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_maid_sleeves", PresetColour.CLOTHING_BLACK, false), true, this);
 		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_maid_stockings", PresetColour.CLOTHING_BLACK, false), true, this);
-		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_maid_heels", PresetColour.CLOTHING_BLACK, false), true, this);
-		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_neck_bell_collar", PresetColour.CLOTHING_BLACK, false), true, this);
+		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_foot_stiletto_heels", PresetColour.CLOTHING_BLACK, false), true, this);
+		AbstractClothing collar = Main.game.getItemGen().generateClothing("innoxia_bdsm_metal_collar", false);
+		collar.setSealed(true);
+		collar.setColour(0, PresetColour.CLOTHING_SILVER);
+		this.equipClothingFromNowhere(collar, true, this);
 
 	}
 
@@ -241,16 +245,16 @@ public class Rose extends NPC {
 	public void changeFurryLevel(){
 	}
 
-	@Override
-	public void turnUpdate() {
-		if(!Main.game.getCharactersPresent().contains(this) && !Main.game.getCurrentDialogueNode().isTravelDisabled()) {
-			if(Main.game.isExtendedWorkTime()) {
-				this.setLocation(WorldType.LILAYAS_HOUSE_GROUND_FLOOR, PlaceType.LILAYA_HOME_LAB);
-			} else {
-				this.setLocation(WorldType.LILAYAS_HOUSE_FIRST_FLOOR, PlaceType.LILAYA_HOME_ROOM_ROSE, true);
-			}
-		}
-	}
+//	@Override
+//	public void turnUpdate() {
+//		if(!Main.game.getCharactersPresent().contains(this) && !Main.game.getCurrentDialogueNode().isTravelDisabled()) {
+//			if(Main.game.isExtendedWorkTime()) {
+//				this.setLocation(WorldType.LILAYAS_HOUSE_GROUND_FLOOR, PlaceType.LILAYA_HOME_LAB);
+//			} else {
+//				this.setLocation(WorldType.LILAYAS_HOUSE_FIRST_FLOOR, PlaceType.LILAYA_HOME_ROOM_ROSE, true);
+//			}
+//		}
+//	}
 	
 	@Override
 	public DialogueNode getEncounterDialogue() {
@@ -298,6 +302,16 @@ public class Rose extends NPC {
 		}
 
 		return super.calculateSexTypeWeighting(type, target, request, lustOrArousalCalculation);
+	}
+	
+	@Override
+	public boolean isAbleToBeImpregnated() {
+		return true;
+	}
+	
+	@Override
+	public boolean isAttractedTo(GameCharacter character) {
+		return false;
 	}
 	
 	@Override

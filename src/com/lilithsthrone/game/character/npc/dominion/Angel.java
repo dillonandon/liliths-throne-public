@@ -55,6 +55,8 @@ import com.lilithsthrone.utils.Util.Value;
 import com.lilithsthrone.utils.colours.PresetColour;
 import com.lilithsthrone.world.WorldType;
 import com.lilithsthrone.world.places.PlaceType;
+import com.lilithsthrone.game.character.GameCharacter;
+import com.lilithsthrone.game.inventory.clothing.AbstractClothing;
 
 /**
  * @since 0.2.2
@@ -122,7 +124,7 @@ public class Angel extends NPC {
 					PersonalityTrait.KIND,
 					PersonalityTrait.LEWD);
 			
-			this.setSexualOrientation(SexualOrientation.AMBIPHILIC);
+			this.setSexualOrientation(SexualOrientation.GYNEPHILIC);
 			
 			this.setHistory(Occupation.NPC_PROSTITUTE);
 	
@@ -138,7 +140,7 @@ public class Angel extends NPC {
 
 		// Core:
 		this.setHeight(174);
-		this.setFemininity(90);
+		this.setFemininity(100);
 		this.setMuscle(Muscle.TWO_TONED.getMedianValue());
 		this.setBodySize(BodySize.ONE_SLENDER.getMedianValue());
 		
@@ -173,7 +175,7 @@ public class Angel extends NPC {
 		
 		// Chest:
 		this.setNippleVirgin(true);
-		this.setBreastSize(CupSize.DD.getMeasurement());
+		this.setBreastSize(CupSize.G.getMeasurement());
 		this.setBreastShape(BreastShape.ROUND);
 		this.setNippleSize(NippleSize.TWO_BIG);
 		this.setAreolaeSize(AreolaeSize.TWO_BIG);
@@ -227,7 +229,10 @@ public class Angel extends NPC {
 		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_torso_plunge_club_dress", PresetColour.CLOTHING_RED_BURGUNDY, false), true, this);
 		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_foot_stiletto_heels", PresetColour.CLOTHING_RED_BURGUNDY, false), true, this);
 
-		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_neck_velvet_choker", PresetColour.CLOTHING_BLACK, false), true, this);
+		AbstractClothing collar = Main.game.getItemGen().generateClothing("innoxia_bdsm_metal_collar", false);
+		collar.setSealed(true);
+		collar.setColour(0, PresetColour.CLOTHING_SILVER);
+		this.equipClothingFromNowhere(collar, true, this);
 		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing(ClothingType.WRIST_WOMENS_WATCH, PresetColour.CLOTHING_BLACK, false), true, this);
 		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_finger_gemstone_ring", PresetColour.CLOTHING_SILVER, PresetColour.CLOTHING_RED_DARK, PresetColour.CLOTHING_SILVER, false), true, this);
 		
@@ -273,6 +278,16 @@ public class Angel extends NPC {
 	@Override
 	public DialogueNode getEncounterDialogue() {
 		return null;
+	}
+	
+	@Override
+	public boolean isAbleToBeImpregnated() {
+		return true;
+	}
+	
+	@Override
+	public boolean isAttractedTo(GameCharacter character) {
+		return false;
 	}
 
 

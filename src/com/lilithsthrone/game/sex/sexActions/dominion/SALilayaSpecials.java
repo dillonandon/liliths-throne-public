@@ -294,7 +294,7 @@ public class SALilayaSpecials {
 
 		@Override
 		public boolean endsSex() {
-			return true;
+			return false;
 		}
 	};
 }

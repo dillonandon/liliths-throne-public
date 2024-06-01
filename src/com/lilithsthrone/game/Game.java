@@ -2972,9 +2972,9 @@ public class Game implements XMLSaving {
 					&& !Main.game.getCharactersPresent().contains(npc)
 					&& !Main.game.getPlayer().getCompanions().contains(npc)
 					&& (Main.game.getSecondsPassed() - npc.getTimeProgressedToFinalPregnancyStage())>(12*60*60)) {
-				if(npc instanceof Lilaya) {
-					// Lilaya will only end pregnancy after you've seen it, or if she's a full demon:
-					if(Main.game.getNpc(Lilaya.class).isCharacterReactedToPregnancy(Main.game.getPlayer()) || npc.getRaceStage()==RaceStage.GREATER) {
+				if(npc instanceof Finch) {
+					// Finch will only end pregnancy after you've seen it, or if he's a full demon:
+					if(Main.game.getNpc(Finch.class).isCharacterReactedToPregnancy(Main.game.getPlayer()) || npc.getRaceStage()==RaceStage.GREATER) {
 						npc.endPregnancy(true);
 					}
 					

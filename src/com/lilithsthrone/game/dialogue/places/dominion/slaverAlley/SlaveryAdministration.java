@@ -14,6 +14,9 @@ import com.lilithsthrone.game.inventory.item.ItemType;
 import com.lilithsthrone.main.Main;
 import com.lilithsthrone.utils.Util;
 import com.lilithsthrone.utils.colours.PresetColour;
+import com.lilithsthrone.game.character.npc.dominion.Lilaya;
+import com.lilithsthrone.game.character.npc.dominion.Rose;
+import com.lilithsthrone.game.character.npc.submission.Lyssieth;
 
 /**
  * @since 0.3.2 (content from 0.1.0)
@@ -187,6 +190,9 @@ public class SlaveryAdministration {
 					public void effects() {
 						Main.game.getTextEndStringBuilder().append(Main.game.getPlayer().setQuestProgress(QuestLine.SIDE_SLAVERY, Quest.SIDE_UTIL_COMPLETE));
 						Main.game.getTextEndStringBuilder().append(Main.game.getPlayer().addItem(Main.game.getItemGen().generateItem(ItemType.SLAVER_LICENSE), false));
+						Main.game.getPlayer().addSlave(Main.game.getNpc(Lilaya.class));
+						Main.game.getPlayer().addSlave(Main.game.getNpc(Rose.class));
+						Main.game.getPlayer().addSlave(Main.game.getNpc(Lyssieth.class));
 					}
 				};
 

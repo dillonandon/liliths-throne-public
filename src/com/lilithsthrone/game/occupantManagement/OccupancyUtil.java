@@ -1732,7 +1732,7 @@ public class OccupancyUtil implements XMLSaving {
 		for(NPC npc : otherSlavesPresent) {
 			if(!npc.equals(slave)) {
 				List<String> descriptions = null;
-				if(slave.hasStatusEffect(StatusEffect.PENT_UP_SLAVE)) { // They only want sex once a day, to stop the logs from being flooded
+//				if(slave.hasStatusEffect(StatusEffect.PENT_UP_SLAVE)) { // They only want sex once a day, to stop the logs from being flooded
 					if(currentJob.hasFlag(SlaveJobFlag.INTERACTION_SEX)
 							&& slave.isAttractedTo(npc)
 							&& (npc.isAttractedTo(slave) || slave.isWillingToRape(npc))
@@ -1751,29 +1751,29 @@ public class OccupancyUtil implements XMLSaving {
 							return sexEvent;
 						}
 					}
-				}
+//				}
 				
 				if(currentJob.hasFlag(SlaveJobFlag.INTERACTION_BONDING)) {
 					// Generic affection event:
 					descriptions = new ArrayList<>();
 					
-					float chanceToBond = 0.2f;
+					float chanceToBond = 0.01f;
 					// Negative modifiers:
 					if(slave.isShy()) {
-						chanceToBond -= 0.075f;
+						chanceToBond -= 0.0075f;
 					}
 					if(npc.isShy()) {
-						chanceToBond -= 0.075f;
+						chanceToBond -= 0.0075f;
 					}
 					// Positive modifiers:
 					if(slave.isConfident()) {
-						chanceToBond += 0.05f;
+						chanceToBond += 0.005f;
 					}
 					if(npc.isConfident()) {
-						chanceToBond += 0.05f;
+						chanceToBond += 0.005f;
 					}
 					if(slave.isRelatedTo(npc)) {
-						chanceToBond += 0.1f;
+						chanceToBond += 0.01f;
 					}
 					
 					float chanceForPositiveOutcome = 1f;

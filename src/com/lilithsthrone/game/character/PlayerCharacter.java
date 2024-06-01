@@ -1502,7 +1502,7 @@ public class PlayerCharacter extends GameCharacter implements XMLSaving {
 				} else {
 					sb.append(UtilText.parseFromXMLFile("characters/dominion/lilaya", "ORGASM_REACTION_CREAMPIE"));
 				}
-				triggerEndScene = true;
+				triggerEndScene = false;
 				
 			// Amazon's Secret status effect reaction:
 			} else if(this.hasStatusEffect("innoxia_amazons_secret")) {
@@ -1513,7 +1513,7 @@ public class PlayerCharacter extends GameCharacter implements XMLSaving {
 
 				if(charactersContactingVagina.contains(Main.game.getNpc(Lilaya.class))) {
 					Main.game.getDialogueFlags().setFlag(DialogueFlagValue.lilayaAmazonsSecretImpregnation, true);
-					triggerEndScene = true;
+					triggerEndScene = false;
 					sb.append(UtilText.parseFromXMLFile("characters/dominion/lilaya", "ORGASM_REACTION_AMAZONS_SECRET"));
 				}
 			}

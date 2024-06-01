@@ -175,17 +175,17 @@ public class Lilaya extends NPC {
 	
 	private void setupCoverings(Colour humanSkinColour) {
 		this.setEyeCovering(new Covering(BodyCoveringType.EYE_DEMON_COMMON, PresetColour.EYE_YELLOW));
-		this.setSkinCovering(new Covering(BodyCoveringType.DEMON_COMMON, PresetColour.SKIN_RED), true);
+		this.setSkinCovering(new Covering(BodyCoveringType.DEMON_COMMON, PresetColour.SKIN_RED), false);
 
 		this.setAssType(AssType.DEMON_COMMON);
 		this.setBreastType(BreastType.DEMON_COMMON);
 		
 		this.setSkinCovering(new Covering(BodyCoveringType.HUMAN, humanSkinColour), true);
-		this.setSkinCovering(new Covering(BodyCoveringType.NIPPLES, humanSkinColour), false);
-		this.setSkinCovering(new Covering(BodyCoveringType.VAGINA, humanSkinColour), false);
-		this.setSkinCovering(new Covering(BodyCoveringType.ANUS, humanSkinColour), false);
-		this.setSkinCovering(new Covering(BodyCoveringType.PENIS, humanSkinColour), false);
-		this.setSkinCovering(new Covering(BodyCoveringType.MOUTH, humanSkinColour), false);
+		this.setSkinCovering(new Covering(BodyCoveringType.NIPPLES, humanSkinColour), true);
+		this.setSkinCovering(new Covering(BodyCoveringType.VAGINA, humanSkinColour), true);
+		this.setSkinCovering(new Covering(BodyCoveringType.ANUS, humanSkinColour), true);
+		this.setSkinCovering(new Covering(BodyCoveringType.PENIS, humanSkinColour), true);
+		this.setSkinCovering(new Covering(BodyCoveringType.MOUTH, humanSkinColour), true);
 		
 		this.setSkinCovering(new Covering(BodyCoveringType.HORN, PresetColour.COVERING_DARK_GREY), false);
 
@@ -211,7 +211,7 @@ public class Lilaya extends NPC {
 					PersonalityTrait.KIND,
 					PersonalityTrait.SHY);
 			
-			this.setSexualOrientation(SexualOrientation.AMBIPHILIC);
+			this.setSexualOrientation(SexualOrientation.GYNEPHILIC);
 			
 			this.setHistory(Occupation.NPC_ARCANE_RESEARCHER);
 	
@@ -230,8 +230,8 @@ public class Lilaya extends NPC {
 		this.setTailType(TailType.DEMON_COMMON);
 		this.setTailGirth(PenetrationGirth.FIVE_THICK);
 
-		this.setHeight(180);
-		this.setFemininity(85);
+		this.setHeight(170);
+		this.setFemininity(100);
 		this.setMuscle(Muscle.ONE_LIGHTLY_MUSCLED.getMedianValue());
 		this.setBodySize(BodySize.TWO_AVERAGE.getMedianValue());
 		
@@ -248,7 +248,7 @@ public class Lilaya extends NPC {
 		
 		// Face:
 		this.setFaceVirgin(false);
-		this.setLipSize(LipSize.TWO_FULL);
+		this.setLipSize(LipSize.THREE_PLUMP);
 		this.setFaceCapacity(Capacity.THREE_SLIGHTLY_LOOSE, true);
 		// Throat settings and modifiers
 		this.setTongueLength(TongueLength.ZERO_NORMAL.getMedianValue());
@@ -256,16 +256,16 @@ public class Lilaya extends NPC {
 		
 		// Chest:
 		this.setNippleVirgin(false);
-		this.setBreastSize(CupSize.E.getMeasurement());
-		this.setBreastShape(BreastShape.PERKY);
+		this.setBreastSize(CupSize.H.getMeasurement());
+		this.setBreastShape(BreastShape.ROUND);
 		this.setNippleSize(NippleSize.THREE_LARGE);
 		this.setAreolaeSize(AreolaeSize.THREE_LARGE);
 		// Nipple settings and modifiers
 		
 		// Ass:
 		this.setAssVirgin(false);
-		this.setAssBleached(false);
-		this.setAssSize(AssSize.FOUR_LARGE);
+		this.setAssBleached(true);
+		this.setAssSize(AssSize.FIVE_HUGE);
 		this.setHipSize(HipSize.FOUR_WOMANLY);
 		// Anus settings and modifiers
 		
@@ -298,21 +298,27 @@ public class Lilaya extends NPC {
 		this.unequipAllClothingIntoVoid(true, true);
 		this.setHairStyle(HairStyle.LOOSE);
 		
-		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_groin_panties", PresetColour.CLOTHING_BLACK, false), true, this);
-		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_chest_fullcup_bra", PresetColour.CLOTHING_BLACK, false), true, this);
-		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_leg_pencil_skirt", PresetColour.CLOTHING_BLACK, false), true, this);
+		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_groin_lacy_thong", PresetColour.CLOTHING_BLACK, false), true, this);
+		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_chest_lacy_plunge_bra", PresetColour.CLOTHING_BLACK, false), true, this);
+		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_leg_micro_skirt_belted", PresetColour.CLOTHING_BLACK, false), true, this);
 		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing(ClothingType.getClothingTypeFromId("innoxia_torso_feminine_short_sleeve_shirt"), PresetColour.CLOTHING_WHITE, PresetColour.CLOTHING_GREY, PresetColour.CLOTHING_GREY, false), true, this);
+		this.isAbleToBeDisplaced(this.getClothingInSlot(InventorySlot.TORSO_UNDER), DisplacementType.UNBUTTONS, true, true, this);
 		
 		AbstractClothing labCoat = Main.game.getItemGen().generateClothing("innoxia_scientist_lab_coat", PresetColour.CLOTHING_WHITE, false);
 		this.equipClothingFromNowhere(labCoat, true, this);
 		this.isAbleToBeDisplaced(this.getClothingInSlot(InventorySlot.TORSO_OVER), DisplacementType.UNBUTTONS, true, true, this);
 		
-		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_foot_heels", PresetColour.CLOTHING_BLACK, false), true, this);
+		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_foot_stiletto_heels", PresetColour.CLOTHING_BLACK, false), true, this);
 		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_sock_stockings", PresetColour.CLOTHING_BLACK, false), true, this);
 		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_eye_glasses", PresetColour.CLOTHING_BLACK_STEEL, false), true, this);
 		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing(ClothingType.WRIST_WOMENS_WATCH, PresetColour.CLOTHING_BLACK, false), true, this);
 		
 		this.setPiercedEar(true);
+		
+		AbstractClothing collar = Main.game.getItemGen().generateClothing("innoxia_bdsm_metal_collar", false);
+		collar.setSealed(true);
+		collar.setColour(0, PresetColour.CLOTHING_SILVER);
+		this.equipClothingFromNowhere(collar, true, this);
 	}
 	
 	public void applyGeishaChange() {
@@ -330,7 +336,7 @@ public class Lilaya extends NPC {
 		this.setHairStyle(HairStyle.PONYTAIL);
 		
 		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_chest_lacy_plunge_bra", PresetColour.CLOTHING_BLACK, false), true, this);
-		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_groin_lacy_panties", PresetColour.CLOTHING_BLACK, false), true, this);
+		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_groin_lacy_thong", PresetColour.CLOTHING_BLACK, false), true, this);
 		
 		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing(ClothingType.TORSO_PLUNGE_DRESS, PresetColour.CLOTHING_BLACK, false), true, this);
 		this.equipClothingFromNowhere(Main.game.getItemGen().generateClothing("innoxia_foot_stiletto_heels", PresetColour.CLOTHING_BLACK, false), true, this);
@@ -360,7 +366,7 @@ public class Lilaya extends NPC {
 	// Prevent issues with Geisha Lilaya immediately backing out of submissive sex:
 	@Override
 	public boolean isAttractedTo(GameCharacter character) {
-		return true;
+		return false;
 	}
 
 	@Override
@@ -407,16 +413,16 @@ public class Lilaya extends NPC {
 	public void changeFurryLevel(){
 	}
 
-	@Override
-	public void turnUpdate() {
-		if(!Main.game.getCharactersPresent().contains(this) && !Main.game.getCurrentDialogueNode().isTravelDisabled()) {
-			if(Main.game.isExtendedWorkTime()) {
-				this.setLocation(WorldType.LILAYAS_HOUSE_GROUND_FLOOR, PlaceType.LILAYA_HOME_LAB);
-			} else {
-				this.setLocation(WorldType.LILAYAS_HOUSE_FIRST_FLOOR, PlaceType.LILAYA_HOME_ROOM_ROSE);
-			}
-		}
-	}
+//	@Override
+//	public void turnUpdate() {
+//		if(!Main.game.getCharactersPresent().contains(this) && !Main.game.getCurrentDialogueNode().isTravelDisabled()) {
+//			if(Main.game.isExtendedWorkTime()) {
+//				this.setLocation(WorldType.LILAYAS_HOUSE_GROUND_FLOOR, PlaceType.LILAYA_HOME_LAB);
+//			} else {
+//				this.setLocation(WorldType.LILAYAS_HOUSE_FIRST_FLOOR, PlaceType.LILAYA_HOME_ROOM_ROSE);
+//			}
+//		}
+//	}
 	
 	@Override
 	public Set<Relationship> getRelationshipsTo(GameCharacter character, Relationship... excludedRelationships) {
@@ -463,15 +469,15 @@ public class Lilaya extends NPC {
 	public Value<Boolean, String> getItemUseEffects(AbstractItem item, GameCharacter itemOwner, GameCharacter user, GameCharacter target) {
 		if(user.isPlayer() && !target.isPlayer() && item.isTypeOneOf("innoxia_pills_fertility", "innoxia_pills_broodmother")) {
 			if(this.getFetishDesire(Fetish.FETISH_PREGNANCY).isNegative()) {
-				itemOwner.removeItem(item);
+				itemOwner.useItem(item, this, false);
 				return new Value<>(false,
 						"<p>"
 							+ "Producing a "+item.getColour(0).getName()+" "+item.getName(false, false)+" from your inventory, you pop it out of its plastic wrapper before bringing it up to Lilaya's mouth."
-							+ " Seeing what it is you're trying to get her to swallow, she furrows her eyebrows and smacks the pill out of your [pc.hand], sending it flying off under one of the lab tables."
-							+ " In a sharp tone, she admonishes you, "
+							+ " Before she gets the opportunity to protest, you forcefully shove the pill into her mouth while covering it with your palm to stop her from spitting it out."							
+							+ " She shakes her head vigorously in protest but you pinch her nostrils shut until she has no choice but to swallow the unwanted drug."
 							+ (this.hasPenis()
-									?" [lilaya.speech(I don't care if you're trying to make my cum more virile! I'm <i>not</i> swallowing anything that would make me more fertile!)]"
-									:" [lilaya.speech(I'm <i>not</i> swallowing anything that would make me more fertile! You're <i>not</i> going to cum inside of me anyway, so why would you even try that?!)]")
+									?" [lilaya.speech(I don't care if you're trying to make my cum more virile! <i>Why</i> make me swallow something that will make me more fertile?)]"
+									:" [lilaya.speech(<i>Why</i> make me swallow something that will make me more fertile? You're not going to cum inside of me anyway, <i>right?!</i>)]")
 						+ "</p>");
 				
 			} else {

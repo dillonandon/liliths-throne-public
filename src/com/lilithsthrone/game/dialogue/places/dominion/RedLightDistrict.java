@@ -1091,6 +1091,7 @@ public class RedLightDistrict {
 								public void effects() {
 									Main.game.getDialogueFlags().setFlag(DialogueFlagValue.prostitutionLicenseObtained, true);
 									Main.game.getPlayer().incrementMoney(-5000);
+									Main.game.getPlayer().addSlave(Main.game.getNpc(Angel.class));
 								}
 							};
 						}
